@@ -268,10 +268,25 @@ class MainWindow(QMainWindow):
 
         layout.addLayout(grid)
 
+        # Botones: Guardar (por defecto) + Registrar Viaje
+        hbtns = QHBoxLayout()
+        btn_save = QPushButton("💾 Guardar")
+        btn_save.setFixedWidth(100)
+        btn_save.setToolTip("Guardar viaje (Enter)")
+        btn_save.setAutoDefault(True)
+        btn_save.setDefault(True)
+        btn_save.setStyleSheet("color: white;")
+        btn_save.clicked.connect(self.add_trip)
+
         btn = QPushButton("✓  Registrar Viaje")
         btn.setFixedWidth(200)
         btn.clicked.connect(self.add_trip)
-        layout.addWidget(btn)
+
+        hbtns.addStretch()
+        hbtns.addWidget(btn_save)
+        hbtns.addWidget(btn)
+        layout.addLayout(hbtns)
+
         layout.addStretch()
         return w
 
